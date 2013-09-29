@@ -17,3 +17,39 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+$(document).ready(function(){
+
+  $("#jquery_jplayer_1").jplayer({
+    ready: function(event){
+      $($this).jplayer("setMedia",
+        {
+        mp3: //Music Dir
+        oga: //ogg extension
+        });
+    },
+    swfPath:"http://jplayer.org/latest/js",
+    supplied: "mp3, oga"
+  });
+
+  var myPlaylist = new jPlayerPlasylist({
+    jPlayer: "#jquery_jplayer_N",
+    cssSelectorAncestor:"#jp_container_N"
+  }, [
+      {
+        title: "Current Song",
+        artitst: "Current Artist",
+        mp3: "Music Dir"
+        oga:: "ogg extension"
+      }
+  ],{
+    playlistOptions :{
+      enableRemoveControls: true;
+    },
+    swfPath: "/js",
+    supplied: "mp3, oga",
+    smoothPlayBar: true,
+    keyEnabled true,
+  });
+
+});
