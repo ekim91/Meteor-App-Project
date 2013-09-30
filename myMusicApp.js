@@ -2,14 +2,6 @@ if (Meteor.isClient) {
   Template.Music.Songs= function () {
     return "Welcome to myMusicApp.";
   };
-
-  Template.Music.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
 }
 
 if (Meteor.isServer) {
@@ -24,8 +16,8 @@ $(document).ready(function(){
     ready: function(event){
       $($this).jplayer("setMedia",
         {
-        mp3: //Music Dir
-        oga: //ogg extension
+        mp3: "file://localhost/Users/Ed/Music/mp3"
+        oga: "file://localhost/Users/Ed/Music/ogg"
         });
     },
     swfPath:"http://jplayer.org/latest/js",
@@ -39,8 +31,8 @@ $(document).ready(function(){
       {
         title: "Current Song",
         artitst: "Current Artist",
-        mp3: "Music Dir"
-        oga:: "ogg extension"
+        mp3: "file://localhost/Users/Ed/Music/mp3"
+        oga:: "file://localhost/Users/Ed/Music/ogg"
       }
   ],{
     playlistOptions :{
@@ -55,7 +47,7 @@ $(document).ready(function(){
     swfPath: "/js",
     supplied: "mp3, oga",
     smoothPlayBar: true,
-    keyEnabled true,
+    keyEnabled: true
   });
 
 });
