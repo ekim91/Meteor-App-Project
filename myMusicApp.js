@@ -33,8 +33,8 @@ $(document).ready(function(){
   });
 
   var myPlaylist = new jPlayerPlasylist({
-    jPlayer: "#jquery_jplayer_N",
-    cssSelectorAncestor:"#jp_container_N"
+    jPlayer: "#jquery_jplayer_1",
+    cssSelectorAncestor:"#jp_container_1"
   }, [
       {
         title: "Current Song",
@@ -44,7 +44,13 @@ $(document).ready(function(){
       }
   ],{
     playlistOptions :{
-      enableRemoveControls: true;
+      autoPlay : false,
+      enableRemoveControls: true,
+      shuffleOnLoop: true,
+      displayTime: 'slow',
+      addTime:'fast',
+      removeTime:'fast',
+      shuffleTime: 'slow'
     },
     swfPath: "/js",
     supplied: "mp3, oga",
