@@ -14,7 +14,7 @@ $(document).ready(function(){
 
   $("#jquery_jplayer_1").jplayer({
     ready: function(event){
-      $($this).jplayer("setMedia",
+      $(this).jplayer("setMedia",
         {
         mp3: "file://localhost/Users/Ed/Music/mp3"
         oga: "file://localhost/Users/Ed/Music/ogg"
