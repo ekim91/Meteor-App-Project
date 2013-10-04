@@ -1,8 +1,8 @@
 <head>
   <title>Music Player</title>
-  <script type="text/javascript" src="myMusicApp.js" ></script>
+  <link type="text/css" href="/sking/jplayer.blue.monday.css" rel="stylesheet"/>
+  <script type="text/javascript" scr="myMusicApp/js/jquery.jplayer.min.js"></script>
 </head>
-
 <body>
   <th> Music player </th>
 </body>
@@ -14,11 +14,11 @@
   
   <!--creating buttons on player-->
 
-  <li> <a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-  <li> <a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-  <li> <a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-  <li> <a href="javascript:;" class="jp-mute" tableindex="1">mute</a></li>
-  <li> <a href="javascript:;" class="jp-add" tableindex="1">add</a></li>
+  <li> <a href="javascript:void(0)" class="jp-play" tabindex="1">play</a></li>
+  <li> <a href="javascript:void(0)" class="jp-pause" tabindex="1">pause</a></li>
+  <li> <a href="javascript:void(0)" class="jp-stop" tabindex="1">stop</a></li>
+  <li> <a href="javascript:void(0)" class="jp-mute" tableindex="1">mute</a></li>
+  <li> <a href="javascript:void(0)" class="jp-add" tableindex="1">add</a></li>
 
   <!--creating UI-->
 
@@ -40,12 +40,6 @@
       <li> 'Title Goes Here' </li>
     </ul>
   </div>
-  <div class="jp-no-solution">
-    <span>Software out of Date</span>
-    In order for you to continue listenning to your music please update your browser or flash player to the most recent version! Thank You!
-    <a targert="_blank" href="get.adobe.com/flashplayer/" '."Update Your Flash".'</a>
-  </div>
-  </div>
   </div>
 
 
@@ -56,10 +50,5 @@
     </div>
   </div>
 
-<template name="Music">
-  <h1>Music Player!</h1>
-  {{SongsSong}
-  <input type="button" value="Click" />
-</template>
 
 

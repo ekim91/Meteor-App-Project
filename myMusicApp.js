@@ -1,27 +1,16 @@
-if (Meteor.isClient) {
-  Template.Music.Songs= function () {
-    return "Welcome to myMusicApp.";
-  };
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
-
-$(document).ready(function(){
-
-  $("#jquery_jplayer_1").jplayer({
+$(document).ready(function(){  
+$("#jquery_jplayer_1").jplayer({
     ready: function(event){
       $(this).jplayer("setMedia",
         {
-        mp3: "file://localhost/Users/Ed/Music/mp3"
-        oga: "file://localhost/Users/Ed/Music/ogg"
+        mp3: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.mp3",
+        wav: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.wav"
         });
     },
     swfPath:"http://jplayer.org/latest/js",
-    supplied: "mp3, oga"
+    supplied: "mp3, wav"
+    smoothPlayBar: true,
+    keyEnabled: true
   });
 
   var myPlaylist = new jPlayerPlasylist({
@@ -31,8 +20,8 @@ $(document).ready(function(){
       {
         title: "Current Song",
         artitst: "Current Artist",
-        mp3: "file://localhost/Users/Ed/Music/mp3"
-        oga:: "file://localhost/Users/Ed/Music/ogg"
+        mp3: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.mp3",
+        wav: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.wav"
       }
   ],{
     playlistOptions :{
@@ -44,10 +33,5 @@ $(document).ready(function(){
       removeTime:'fast',
       shuffleTime: 'slow'
     },
-    swfPath: "/js",
-    supplied: "mp3, oga",
-    smoothPlayBar: true,
-    keyEnabled: true
   });
-
 });
