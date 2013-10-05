@@ -1,4 +1,4 @@
-
+$(document).ready(function(){  
 
 PlayLists = new Meteor.Collection("PlayLists");
 
@@ -18,7 +18,6 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
   }
 });
 
-$(document).ready(function(){  
   $("#jquery_jplayer_1").jplayer({
     ready: function(event){
       $(this).jplayer("setMedia",
@@ -90,4 +89,5 @@ Template.PlayLists.editing = function () {
   return Session.equals('editing_PlayListname', this._id);
 };
 
+});
 });
