@@ -1,4 +1,3 @@
-$(document).ready(function(){  
 
 PlayLists = new Meteor.Collection("PlayLists");
 
@@ -26,7 +25,7 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
     swfPath:"http://jplayer.org/latest/js",
     supplied: "mp3, wav",
     smoothPlayBar: true,
-    keyEnabled: true
+    keyEnabled: true,
   ready: function(event){
   var myPlaylist = new jPlayerPlasylist({
     jPlayer: "#jquery_jplayer_1",
@@ -52,6 +51,10 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
 }
 });
 
+Template.jplayer.jplayer = function(){
+  return jplayer.ready();
+}
+
 Template.PlayLists.Loading = function() {
   return !PlayListsHandle.ready();
 }
@@ -59,7 +62,6 @@ Template.PlayLists.Loading = function() {
 Template.PlayLists.PlayLists = function () {
   return PlayLists.find({}, {sort: {name: 1}});
 };
-
 
 Template.PlayLists.events({
   'mousedown .PlayList': function (evt) { 
@@ -73,6 +75,7 @@ Template.PlayLists.events({
     Deps.flush();
     activateInput(tmpl.find("#PlayList-name-input"));
   }
+});
 
 Template.PlayLists.selected = function () {
   return Session.equals('PlayLists_id', this._id) ? 'selected' : '';
@@ -86,5 +89,3 @@ Template.PlayLists.editing = function () {
   return Session.equals('editing_PlayListname', this._id);
 };
 
-});
-});
