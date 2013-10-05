@@ -26,12 +26,11 @@ $(document).ready(function(){
         mp3: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.mp3",
         wav: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.wav"
         });
-    
+    },
     swfPath:"http://jplayer.org/latest/js",
     supplied: "mp3, wav",
     smoothPlayBar: true,
     keyEnabled: true
-  }
   });
   ready: function(event){
   var myPlaylist = new jPlayerPlasylist({
