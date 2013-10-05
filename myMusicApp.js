@@ -3,6 +3,7 @@ PlayLists = new Meteor.Collection("PlayLists");
 
 //Id for current PlayList
 Session.setDefault('PlayLists_id', null);
+//Editing the PlayList by ID
 Session.setDefault('edit_PlayListname', null);
 
 
@@ -67,7 +68,7 @@ Template.PlayLists.events({
   'mousedown .PlayList': function (evt) { 
     Router.setList(this._id);
   },
-  'click .PlaySist': function (evt) {
+  'click .PlayList': function (evt) {
     evt.preventDefault();
   },
   'dblclick .PlayList': function (evt, tmpl) { 
