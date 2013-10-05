@@ -7,9 +7,6 @@ Session.setDefault('PlayLists_id', null);
 Session.setDefault('edit_PlayListname', null);
 
 
-
-
-
 var listsHandle = Meteor.subscribe('PlayLists', function () {
   if (!Session.get('PlayLists_id')) {
     var list = PlayLists.findOne({}, {sort: {name: 1}});
@@ -30,7 +27,6 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
     supplied: "mp3, wav",
     smoothPlayBar: true,
     keyEnabled: true
-  });
   ready: function(event){
   var myPlaylist = new jPlayerPlasylist({
     jPlayer: "#jquery_jplayer_1",
@@ -54,6 +50,7 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
     },
   });
 }
+});
 
 Template.PlayLists.Loading = function() {
   return !PlayListsHandle.ready();
