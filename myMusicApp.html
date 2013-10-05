@@ -4,9 +4,17 @@
   <script type="text/javascript" scr="myMusicApp/js/jquery.jplayer.min.js"></script>
 </head>
 <body>
-  <th> Music player </th>
+  <div id="main-section">
+    {{> jplayer}}
+  </div>
+  <div id="side-section">
+    {{> PlayList}}
+  </div>
+
 </body>
-  <div id="jquery_jplayer_1" class="jp-plater"></div>
+
+<template name="jplayer">
+  <div id="jquery_jplayer_1" class="jp-player">
   <div id="jp_containter_1" class ="jp_audio">
     <div class="jp-type-single">
       <div class="jp-gui jp-interface">
@@ -41,14 +49,32 @@
     </ul>
   </div>
   </div>
+</template>
 
-
-  <div class="jp-progress">
-    <div class="jp-seek-bar">
-      <div class="jp-play-bar">
+<template name="PlayLists">
+<h1> Play Lists </h1>
+  {{#if loading}}
+    <div id="PlayLists">Loading Your PlayList(s)</div>
+  {{else}}
+    <div id="PlayLists">
+      {{#each PlayLists}}
+      <div class="PlayLists {{Selected}}">
+        {{#if editing}}
+          <div class="edit">
+            <input class="PlayList-name-input" id="PlayList-name-input" type="text" value="{{name}}" />
+          </div>
+          {{else}}
+          <div class="display">
+            <a class="PlayList-name {{name_class}}" href="/{{_id}}">
+              {{name}}
+            </a>
+          </div>
+        {{/if}}
       </div>
+      {{/each}}
     </div>
-  </div>
-
-
-
+    <div id="createPlayList">
+      <input type="text" id="new-PlayList" placeholder="New PlayList" />
+    </div>
+  {{/if}}
+</template>
