@@ -1,11 +1,9 @@
-
 PlayLists = new Meteor.Collection("PlayLists");
 
 //Id for current PlayList
 Session.setDefault('PlayLists_id', null);
 //Editing the PlayList by ID
 Session.setDefault('edit_PlayListname', null);
-
 
 var listsHandle = Meteor.subscribe('PlayLists', function () {
   if (!Session.get('PlayLists_id')) {
@@ -15,7 +13,8 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
   }
 });
 
-  $("#jQuery_jplayer_1").jplayer({
+
+  $("#jquery_jplayer_1").jplayer({
     ready: function(event){
       $(this).jplayer("setMedia",
         {
@@ -52,12 +51,13 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
 }
 });
 
+
 Template.jplayer.jplayer = function(){
   return jplayer.ready();
 }
 
 Template.PlayLists.Loading = function() {
-  return !PlayListsHandle.ready();
+  return !ListsHandle.ready();
 }
 
 Template.PlayLists.PlayLists = function () {
@@ -77,6 +77,28 @@ Template.PlayLists.events({
     activateInput(tmpl.find("#PlayList-name-input"));
   }
 });
+
+Template.PlayLists.events(okCancelEvents(
+  '#new-PlayList',
+  {
+    ok: function (text, evt) {
+      var id = PlayList.insert({name: text});
+      Router.setList(id);
+      evt.target.value = "";
+    }
+  }));
+
+Template.lists.events(okCancelEvents(
+  '#PlayList-name-input',
+  {
+    ok: function (value) {
+      PlayLists.update(this._id, {$set: {name: value}});
+      Session.set('editing_PlayListname', null);
+    },
+    cancel: function () {
+      Session.set('editing_PlayListname', null);
+    }
+  }));
 
 Template.PlayLists.selected = function () {
   return Session.equals('PlayLists_id', this._id) ? 'selected' : '';
