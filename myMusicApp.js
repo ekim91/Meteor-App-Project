@@ -15,7 +15,7 @@ var listsHandle = Meteor.subscribe('PlayLists', function () {
   }
 });
 
-  $("#jquery_jplayer_1").jplayer({
+  $("#jQuery_jplayer_1").jplayer({
     ready: function(event){
       $(this).jplayer("setMedia",
         {
